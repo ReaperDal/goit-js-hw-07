@@ -26,13 +26,16 @@ const images = [
 ];
 
 const ulGallery = document.querySelector('ul.gallery');
-for (let i = 0; i < images.length; i++) {
-  let img = document.createElement("img");
-  img.src = images[i].url;
-  img.alt = images[i].alt;
-  img.style.width = "600px";
-  img.style.display = "flex";
-  img.style.flexWrap = "wrap";
-  ulGallery.append(img);
- 
+function createGallery(images) {
+  const fragment = document.createDocumentFragment();
+  for (let i = 0; i < images.length; i++) {
+    let img = document.createElement("img");
+    img.src = images[i].url;
+    img.alt = images[i].alt;
+    img.style.width = "600px";
+    img.style.display = "flex";
+    img.style.flexWrap = "wrap";
+    fragment.appendChild(img);
+  }
+  ulGallery.appendChild(fragment);
 }
