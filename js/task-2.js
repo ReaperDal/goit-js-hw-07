@@ -29,13 +29,27 @@ const ulGallery = document.querySelector('ul.gallery');
 function createGallery(images) {
   const fragment = document.createDocumentFragment();
   for (let i = 0; i < images.length; i++) {
-    let img = document.createElement("img");
+    const li = document.createElement("li");
+    const img = document.createElement("img");
     img.src = images[i].url;
     img.alt = images[i].alt;
+    
+
     img.style.width = "600px";
-    img.style.display = "flex";
-    img.style.flexWrap = "wrap";
-    fragment.appendChild(img);
+    img.style.display = "block";
+    img.style.margin = "10px";
+    
+    li.style.listStyleType = "none";
+    li.appendChild(img);
+    fragment.appendChild(li);
   }
+  
+  ulGallery.style.display = "flex";
+  ulGallery.style.flexWrap = "wrap";
+  ulGallery.style.padding = "0";
+  ulGallery.style.margin = "0";
+  
   ulGallery.appendChild(fragment);
 }
+
+createGallery(images);
